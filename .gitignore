@@ -1,5 +1,6 @@
-### enviroment variables file ###
+### enviroment variables files ###
 *.env
+secrets.properties
 
 HELP.md
 target/
