@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxFileDropModule } from 'ngx-file-drop';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button'
+
 import { UploadVideoComponent } from './components/upload-video/upload-video.component';
 
 @NgModule({
@@ -17,7 +21,9 @@ import { UploadVideoComponent } from './components/upload-video/upload-video.com
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxFileDropModule
+    NgxFileDropModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
