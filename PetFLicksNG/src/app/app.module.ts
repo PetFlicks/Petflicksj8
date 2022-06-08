@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { UploadVideoComponent } from './components/upload-video/upload-video.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadVideoComponent
+    UploadVideoComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { UploadVideoComponent } from './components/upload-video/upload-video.com
     HttpClientModule,
     NgxFileDropModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
