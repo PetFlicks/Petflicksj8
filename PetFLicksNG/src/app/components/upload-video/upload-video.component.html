@@ -1,5 +1,7 @@
+<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
 <div class="center">
-    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+    <ngx-file-drop *ngIf="!showProgress" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
     (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
         <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                         Drag and Drop your pets videos here!
@@ -10,7 +12,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Filename:</th>
                 </tr>
             </thead>
             <tbody class="upload-name-style">
@@ -21,5 +23,18 @@
         </table>
     </div>
 <button mat-button (click)="uploadVideo()" *ngIf="fileUploaded">Upload</button>
-
+<div *ngIf="fileEntry" class="progress my-3">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }"
+    >
+      {{ progress }}%
+    </div>
+  </div>
+  <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+  <div class="card mt-3">
 </div>

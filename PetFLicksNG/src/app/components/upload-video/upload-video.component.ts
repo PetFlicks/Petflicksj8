@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgxFileDropEntry } from 'ngx-file-drop';
 import { MatButton } from '@angular/material/button';
 import { HttpVideoService } from 'src/app/services/http-video.service';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-upload-video',
@@ -9,12 +13,20 @@ import { HttpVideoService } from 'src/app/services/http-video.service';
   styleUrls: ['./upload-video.component.css']
 })
 export class UploadVideoComponent {
+  progress = 0;
+  message = '';
+  fileInfos: Observable<any> | undefined;
+
+  showProgress = false;
+  upProgress = false;
+
   fileUploaded: boolean = false;
   fileEntry: FileSystemFileEntry | undefined;
 
   constructor(private http: HttpVideoService) {
 
   }
+
 
   public files: NgxFileDropEntry[] = [];
 
@@ -49,12 +61,24 @@ export class UploadVideoComponent {
   }
 
   uploadVideo() {
+    this.showProgress = true;
     if (this.fileEntry !== undefined) {
       console.log(this.fileEntry);
 
       this.fileEntry.file(file => {
-        this.http.uploadFile(file).subscribe(data => {
-          console.log("video Successfully uploaded");
+        this.http.uploadFile(file).subscribe(event => {
+          if (event.type === HttpEventType.UploadProgress) {
+            if (event.total) {
+              const total: number = event.total;
+              this.progress = Math.round(100 * event.loaded / total);
+            }
+            else {
+              //this.progress = Math.round(100 * event.loaded / 100);
+            }
+          } else if (event instanceof HttpResponse) {
+            //this.message = event.body.message;
+            //this.fileInfos = this.uploadService.getFiles();
+          }
         });
       })
     }

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -10,15 +13,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { UploadVideoComponent } from './components/upload-video/upload-video.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { ViewComponent } from './components/view/view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadVideoComponent,
-    NavbarComponent
+    NavbarComponent,
+    FeedComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    OverlayModule,
+    MatProgressSpinnerModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,51 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <button mat-icon-button class="account-icon" aria-label="nmenu dropdown" (click)="menuOpen()">
+   
+
+        <!-- <button mat-icon-button (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+            {{isOpen ? "Close" : "Open"}}
+          </button>
+                    <ng-template
+            cdkConnectedOverlay
+            [cdkConnectedOverlayOrigin]="trigger"
+            [cdkConnectedOverlayOpen]="isOpen"
+          >
+            <ul class="example-list">
+              <li> <mat-icon>feed</mat-icon> Feed</li>
+              <li> <mat-icon>account_circle</mat-icon> Profile</li>
+              <li> <mat-icon>shares</mat-icon> Shared Videos</li>
+            </ul>
+          </ng-template> -->
+
+            <!-- <button mat-icon-button [matMenuTriggerFor]="menu" class="account-icon" aria-label="menu dropdown">
             <mat-icon>menu</mat-icon>
-                </button>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>feed</mat-icon>
+                <span>Feed</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>account_circle</mat-icon>
+                <span>Profile</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>shares</mat-icon>
+                <span>Shared Videos</span>
+            </button>
+        </mat-menu> -->
+
+&nbsp;
         <span>PetFlicks</span>
 
 
         <span class="example-spacer"></span>
-        <button mat-icon-button class="video-icon" aria-label="video upload" (click)="videoOpen()">
+        <button mat-icon-button class="video-icon" aria-label="video upload" routerLink="upload">
             <mat-icon>video_call</mat-icon>
         </button>
-        <button mat-icon-button class="account-icon" aria-label="account management" (click)="acctOpen()">
-            <mat-icon>account_circle</mat-icon>
+        <button mat-icon-button class="account-icon" aria-label="account management" routerLink="feed">
+            <mat-icon>feed</mat-icon>
         </button>
     </mat-toolbar-row>
 </mat-toolbar>

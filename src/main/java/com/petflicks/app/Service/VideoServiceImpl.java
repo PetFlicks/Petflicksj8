@@ -1,5 +1,8 @@
 package com.petflicks.app.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,10 +34,21 @@ public class VideoServiceImpl implements VideoService {
 		String videoURL = s3Service.uploadFile(file);
 		Video video = new Video();
 		video.setVideoURL(videoURL);
-		
+		video.setPostAt(LocalDateTime.now());
 		videoRepo.save(video);
 		// write to DB
 
+	}
+
+
+
+
+	@Override
+	public List<Video> getAll() {
+		List<Video> videos = videoRepo.findAll();
+		
+		
+		return videos;
 	}
 
 }
