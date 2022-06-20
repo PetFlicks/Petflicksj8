@@ -3,6 +3,9 @@ package com.petflicks.app.Service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -57,23 +60,27 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	@Transactional
+	@Cacheable(cacheNames="users",key="#userId")
 	public User getUserById(int userId) throws UserNotFoundException {/// working
 		return userRepo.findById(userId).get();
 	}
 
 	@Override
+	@Cacheable(cacheNames="users",key="#email")
 	public User getUserByEmail(String email) throws UserNotFoundException {//working
 		return userRepo.findByEmail(email);
 		
 	}
 
 	@Override
+	@Cacheable(cacheNames="users",key="#username")
 	public User getUserByUsername(String username) throws UserNotFoundException {//
 		User user = userRepo.findByUsername(username.toLowerCase().replace(" ", ""));
 		return user;
 	}
 
 	@Override
+	@CachePut(cacheNames = "users", key = "#user.userId")
 	public User update(User user) throws UserNotFoundException {//
 		if (userRepo.existsById(user.getUserId())) {
 			userRepo.save(user);
@@ -84,6 +91,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	@CacheEvict(cacheNames = "users", key = "#userId")
 	public User deleteUser(User user) throws UserNotFoundException {//
 		User userFromDatabase = userRepo.findById(user.getUserId()).get();
 		if(userFromDatabase != null) {
