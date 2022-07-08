@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,9 +28,6 @@ public class VideoServiceImpl implements VideoService {
 		this.videoRepo = videoRepo;
 	}
 
-
-
-
 	public void uploadVideo(MultipartFile file) {
 		String videoURL = s3Service.uploadFile(file);
 		Video video = new Video();
@@ -40,10 +38,8 @@ public class VideoServiceImpl implements VideoService {
 
 	}
 
-
-
-
 	@Override
+	@Cacheable("videos")
 	public List<Video> getAll() {
 		List<Video> videos = videoRepo.findAll();
 		
