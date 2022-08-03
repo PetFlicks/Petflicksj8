@@ -22,6 +22,11 @@ import { UploadVideoComponent } from './components/upload-video/upload-video.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { ViewComponent } from './components/view/view.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -29,12 +34,16 @@ import { ViewComponent } from './components/view/view.component';
     UploadVideoComponent,
     NavbarComponent,
     FeedComponent,
-    ViewComponent
+    ViewComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AppRoutingModule,
     HttpClientModule,
     NgxFileDropModule,
     BrowserAnimationsModule,

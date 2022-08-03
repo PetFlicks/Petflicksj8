@@ -23,3 +23,11 @@
   .example-list > li:last-child {
     border-bottom: none;
   }
+  /* .static {
+    position: absolute;
+    background: white;
+   }
+  
+  .static:hover {
+    opacity: 0;
+   } */

@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-   
+
 
         <!-- <button mat-icon-button (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
             {{isOpen ? "Close" : "Open"}}
@@ -18,7 +18,7 @@
             </ul>
           </ng-template> -->
 
-            <!-- <button mat-icon-button [matMenuTriggerFor]="menu" class="account-icon" aria-label="menu dropdown">
+        <!-- <button mat-icon-button [matMenuTriggerFor]="menu" class="account-icon" aria-label="menu dropdown">
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
@@ -36,16 +36,22 @@
             </button>
         </mat-menu> -->
 
-&nbsp;
+        &nbsp;
+        
         <span>PetFlicks</span>
 
-
+       
         <span class="example-spacer"></span>
+
+       
         <button mat-icon-button class="video-icon" aria-label="video upload" routerLink="upload">
             <mat-icon>video_call</mat-icon>
         </button>
         <button mat-icon-button class="account-icon" aria-label="account management" routerLink="feed">
             <mat-icon>feed</mat-icon>
+        </button>
+        <button mat-icon-button class="static" aria-label="video upload" routerLink="profile">
+            <mat-icon>account_circle</mat-icon>
         </button>
     </mat-toolbar-row>
 </mat-toolbar>
